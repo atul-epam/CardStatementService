@@ -31,14 +31,14 @@ public class CardStatementServiceImpl implements CardStatementService{
     }
 
     private List<Card> getListOfCards() {
-        Card[] cards = restTemplate.getForObject("http://localhost:8080/cards/", Card[].class);
+        Card[] cards = restTemplate.getForObject("http://CARD-SERVICE/cardservice/cards/", Card[].class);
         assert cards != null;
         return Arrays.asList(cards);
     }
 
     public List<Statement> getListOfStatements(Long cardId) {
         try {
-            Statement[] statement = restTemplate.getForObject("http://localhost:8081/statements/" + cardId, Statement[].class);
+            Statement[] statement = restTemplate.getForObject("http://STATEMENT-SERVICE/statementservice/statements/" + cardId, Statement[].class);
             assert statement != null;
             return Arrays.asList(statement);
         }
